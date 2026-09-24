@@ -40,11 +40,11 @@
   if (contactForm) {
     var formStatus = contactForm.querySelector('[data-form-status]');
     if (formStatus) {
-      formStatus.innerHTML = '<i class="fa fa-info-circle" aria-hidden="true"></i> Opens your email app. If nothing happens, use the Email link above.';
+      formStatus.innerHTML = '<i class="fa fa-info-circle" aria-hidden="true"></i> Your message will be sent securely to Faisal.';
     }
     var submitButton = contactForm.querySelector('button[type="submit"]');
     if (submitButton) {
-      submitButton.innerHTML = 'Open email app <i class="fa fa-envelope" aria-hidden="true"></i>';
+      submitButton.innerHTML = 'Send message <i class="fa fa-arrow-right" aria-hidden="true"></i>';
     }
 
     contactForm.addEventListener('submit', function (event) {
@@ -53,9 +53,38 @@
       var name = contactForm.elements.name.value.trim();
       var email = contactForm.elements.email.value.trim();
       var message = contactForm.elements.message.value.trim();
-      var subject = encodeURIComponent('Portfolio contact from ' + name);
-      var body = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n\n' + message);
-      window.location.href = 'mailto:' + recipient + '?subject=' + subject + '&body=' + body;
+      var submitButton = contactForm.querySelector('button[type="submit"]');
+      var status = contactForm.querySelector('[data-form-status]');
+      submitButton.disabled = true;
+      submitButton.innerHTML = 'Sending...';
+
+      fetch('https://formsubmit.co/ajax/' + recipient, {
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          message: message,
+          _subject: 'Portfolio contact from ' + name,
+          _replyto: email,
+          _template: 'table',
+          _captcha: 'true'
+        }),
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        method: 'POST'
+      }).then(function (response) {
+        if (!response.ok) {
+          throw new Error('Form submission failed');
+        }
+        return response.json();
+      }).then(function () {
+        contactForm.reset();
+        status.innerHTML = '<i class="fa fa-check" aria-hidden="true"></i> Message sent. Thank you for reaching out.';
+        submitButton.disabled = false;
+        submitButton.innerHTML = 'Send message <i class="fa fa-arrow-right" aria-hidden="true"></i>';
+      }).catch(function () {
+        status.innerHTML = '<i class="fa fa-warning" aria-hidden="true"></i> The form could not send. Please use the Email link above.';
+        submitButton.disabled = false;
+        submitButton.innerHTML = 'Send message <i class="fa fa-arrow-right" aria-hidden="true"></i>';
+      });
     });
   }
 }());

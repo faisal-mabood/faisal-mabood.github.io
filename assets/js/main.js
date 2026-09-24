@@ -40,7 +40,11 @@
   if (contactForm) {
     var formStatus = contactForm.querySelector('[data-form-status]');
     if (formStatus) {
-      formStatus.innerHTML = '<i class="fa fa-info-circle" aria-hidden="true"></i> Submitting opens your email app with the message addressed to Faisal.';
+      formStatus.innerHTML = '<i class="fa fa-info-circle" aria-hidden="true"></i> Opens your email app. If nothing happens, use the Email link above.';
+    }
+    var submitButton = contactForm.querySelector('button[type="submit"]');
+    if (submitButton) {
+      submitButton.innerHTML = 'Open email app <i class="fa fa-envelope" aria-hidden="true"></i>';
     }
 
     contactForm.addEventListener('submit', function (event) {

@@ -38,10 +38,20 @@
 
   var contactForm = document.querySelector('[data-contact-form]');
   if (contactForm) {
+    var formStatus = contactForm.querySelector('[data-form-status]');
+    if (formStatus) {
+      formStatus.innerHTML = '<i class="fa fa-info-circle" aria-hidden="true"></i> Submitting opens your email app with the message addressed to Faisal.';
+    }
+
     contactForm.addEventListener('submit', function (event) {
       event.preventDefault();
-      var status = contactForm.querySelector('[data-form-status]');
-      status.textContent = 'Form endpoint pending. Add a service endpoint before enabling submissions.';
+      var recipient = 'faisalmabood6@gmail.com';
+      var name = contactForm.elements.name.value.trim();
+      var email = contactForm.elements.email.value.trim();
+      var message = contactForm.elements.message.value.trim();
+      var subject = encodeURIComponent('Portfolio contact from ' + name);
+      var body = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n\n' + message);
+      window.location.href = 'mailto:' + recipient + '?subject=' + subject + '&body=' + body;
     });
   }
 }());

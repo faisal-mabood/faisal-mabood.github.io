@@ -1,10 +1,9 @@
 {
-  "name": "Jekyll-Gulp-Sass-Autoprefixer-Imagemin-BrowserSync",
+  "name": "faisal-mabood-portfolio",
   "version": "1.0.0",
-  "description": "A starter project for Jekyll",
+  "description": "Faisal Mabood personal portfolio build tools",
   "main": "index.js",
-  "repository": "https://github.com/artemsheludko/Jekyll-Gulp-Sass-Autoprefixer-Imagemin-BrowserSync",
-  "author": "Artem Sheludko",
+  "author": "Faisal Mabood",
   "license": "MIT",
   "dependencies": {
     "browser-sync": "^2.18.13",

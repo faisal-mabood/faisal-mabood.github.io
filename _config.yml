@@ -1,26 +1,17 @@
-title: Hello, world! I'm Faisal Mabood
+title: Faisal Mabood | AI Engineer & Python Backend Engineer
 description: > # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
+  Faisal Mabood is an AI Engineer, Python Backend Engineer, and Data & AI Solutions Engineer in Pakistan building practical AI applications, scalable APIs, SaaS backends, and cloud solutions.
 permalink: ':title/'
-baseurl: "/" # the subpath of your site, e.g. /blog
-url: "faisal-mabood.github.io" # the base hostname & protocol for your site, e.g. http://example.com
-site-twitter: #if your site has a twitter account, enter it here
-
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://faisal-mabood.github.io"
 # Author Settings
 author: Faisal Mabood # add your name
-author-img: abc.jpg # add your photo
-about-author: I am a web developer focusing on front-end development. Always hungry to keep learning. # add description
-social-twitter: # add your Twitter handle
-social-facebook: # add your Facebook handle
-social-github: artemsheludko # add your Github handle
-social-linkedin: # add your Linkedin handle
-social-email: # add your Email address
-
-# Disqus
-discus-identifier: mr-brown # add your discus identifier
-
+author-img:
+about-author: AI Engineer, Python Backend Engineer, and Data & AI Solutions Engineer.
+email: faisalmabood6@gmail.com
+phone: "+92 3429621703"
+github-url: https://github.com/faisal-mabood
+linkedin-url: https://www.linkedin.com/in/faisal-mabood-77b76012a
 # Tracker
 analytics: # Google Analytics
 
